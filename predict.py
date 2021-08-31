@@ -147,7 +147,7 @@ def predict(X, model):
   X = np.reshape(X, (len(X), -1))
   y_pred = model.predict(X)
   y = np.zeros((len(X), 8))
-  y[:, 2:4] = y_pred[:, 0:2]
+  y[:, 2:4] = - y_pred[:, 0:2] + y_pred[:, 4:6] + y_pred[:, 2:4]
   y[:, 4:6] = y_pred[:, 4:6] + y_pred[:, 2:4]
   y[:, 6:8] = y_pred[:, 4:6]
   return y
